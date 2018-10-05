@@ -40,6 +40,8 @@ class DefaultPlayer(BasePlayer):
         self.queue = []
         self.current = None
         self.previous = None
+        
+        self.karaoke = False
 
     @property
     def is_playing(self):
@@ -172,6 +174,9 @@ class DefaultPlayer(BasePlayer):
         if isinstance(event, (TrackStuckEvent, TrackExceptionEvent)) or \
                 isinstance(event, TrackEndEvent) and event.reason == 'FINISHED':
             await self.play()
+            
+    def toggle_karaoke(self):
+        self.karaoke = not self.karaoke
 
 
 class PlayerManager:
