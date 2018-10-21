@@ -118,7 +118,7 @@ class DefaultPlayer(BasePlayer):
             await self.stop()
             await self._lavalink.dispatch_event(QueueEndEvent(self))
         else:
-            if self.loop and not ingore_loop:
+            if self.loop and not ignore_loop:
                 track = self.previous
             elif self.shuffle and not ignore_shuffle:
                 track = self.queue.pop(randrange(len(self.queue)))
