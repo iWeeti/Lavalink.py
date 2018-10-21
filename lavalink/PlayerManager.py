@@ -120,7 +120,7 @@ class DefaultPlayer(BasePlayer):
         else:
             if self.loop and not ingore_loop:
                 track = self.previous
-            eliif self.shuffle and not ignore_shuffle:
+            elif self.shuffle and not ignore_shuffle:
                 track = self.queue.pop(randrange(len(self.queue)))
             else:
                 track = self.queue.pop(min(track_index, len(self.queue) - 1))
