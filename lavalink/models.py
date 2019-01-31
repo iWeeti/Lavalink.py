@@ -112,6 +112,7 @@ class DefaultPlayer(BasePlayer):
         self.volume = 100
         self.shuffle = False
         self.repeat = False
+        self.loop = False
         self.equalizer = [0.0 for x in range(15)]  # 0-14, -0.25 - 1.0
 
         self.queue = []
@@ -204,7 +205,6 @@ class DefaultPlayer(BasePlayer):
         if self.repeat and self.current:
             self.queue.append(self.current)
 
-        self.current = None
         self.last_update = 0
         self.last_position = 0
         self.position_timestamp = 0
@@ -212,12 +212,15 @@ class DefaultPlayer(BasePlayer):
 
         if not track:
             if not self.queue:
+                self.current = None
                 await self.stop()
                 await self.node._dispatch_event(QueueEndEvent(self))
                 return
 
             if self.shuffle:
                 track = self.queue.pop(randrange(len(self.queue)))
+            elif self.loop:
+                track = self.current
             else:
                 track = self.queue.pop(0)
 
