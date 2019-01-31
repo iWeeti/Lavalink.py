@@ -27,3 +27,5 @@ compatibility may be possible, it's not encouraged nor is support guaranteed.
 [Discord Server](https://discord.gg/SbJXU9s)
 
 [Lavalink V3.1](https://ci.fredboat.com/guestAuth/repository/download/Lavalink_Build/.lastSuccessful/Lavalink.jar?branch=refs%2Fheads%2Fmaster)
+
+This is my fork from the original version on Lavalink.py, I don't claim to have made all this.
